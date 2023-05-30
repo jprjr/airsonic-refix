@@ -66,7 +66,7 @@
         loading: computed(() => store.playlists === null),
         items: computed(() =>
           props.sort === 'a-z'
-            ? orderBy(store.playlists, 'name')
+            ? orderBy(store.playlists, 'nameUpper')
             : orderBy(store.playlists, 'createdAt', 'desc')),
       }
     },

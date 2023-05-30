@@ -83,6 +83,8 @@ export interface Playlist {
   updatedAt: string
   image?: string
   tracks?: Track[]
+  nameUpper: string
+  nameLower: string
 }
 
 export class UnsupportedOperationError extends Error { }
@@ -456,6 +458,8 @@ export class API {
       trackCount: response.songCount,
       image: response.songCount > 0 ? this.getCoverArtUrl(response) : undefined,
       isPublic: response.public,
+      nameUpper: response.name.toUpperCase() || '(UNNAMED)',
+      nameLower: response.name.toLowerCase() || '(unnamed)',
     }
   }
 

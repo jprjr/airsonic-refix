@@ -29,6 +29,8 @@
   import { computed, defineComponent } from 'vue'
   import CreatePlaylistModal from '@/library/playlist/CreatePlaylistModal.vue'
   import { usePlaylistStore } from '@/library/playlist/store'
+  import { orderBy } from 'lodash-es'
+  import { config } from '@/shared/config'
 
   export default defineComponent({
     components: {
@@ -36,9 +38,10 @@
     },
     setup() {
       const store = usePlaylistStore()
-      const playlists = computed(() => {
-        return store.playlists
-      })
+      const playlists = computed(() =>
+        config.defaultPlaylistSort === 'a-z'
+          ? orderBy(store.playlists, 'nameUpper')
+          : orderBy(store.playlists, 'createdAt', 'desc'))
       return {
         playlists,
         addTracks: store.addTracks
