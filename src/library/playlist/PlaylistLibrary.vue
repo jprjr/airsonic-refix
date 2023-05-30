@@ -2,14 +2,9 @@
   <div>
     <div class="d-flex justify-content-between align-items-center mb-3">
       <ul class="nav-underlined">
-        <li>
-          <router-link :to="{... $route, params: {... $route.params, sort: null }}">
-            Recently added
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{... $route, params: {... $route.params, sort: 'a-z' }}">
-            A-Z
+        <li v-for="{ value, text } in options" :key="value">
+          <router-link :to="{... $route, params: {... $route.params, sort: value }}">
+            {{ text }}
           </router-link>
         </li>
       </ul>
@@ -55,6 +50,14 @@
     },
     props: {
       sort: { type: String, default: null },
+    },
+    computed: {
+      options() {
+        return [
+          { text: 'Recently Added', value: 'recently-added' },
+          { text: 'A-Z', value: 'a-z' },
+        ]
+      },
     },
     setup(props) {
       const store = usePlaylistStore()

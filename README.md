@@ -55,9 +55,30 @@ $ docker run -d -p 8080:80 tamland/airsonic-refix:latest
 
 You can now access the application at http://localhost:8080/
 
-Environment variables:
-- `SERVER_URL` (Optional): The backend server URL. When set the server input on the login page will not be displayed.
-
+Environment variables (all optional):
+- `SERVER_URL` The backend server URL. When set the server input on the login page will not be displayed.
+- `DEFAULT_ALBUM_SORT` Set the default album sorting order. Available values:
+    - `recently-added` (default)
+    - `recently-played`
+    - `most-played`
+    - `a-z`
+    - `random`
+- `DEFAULT_ARTIST_SORT` Set the default artist sorting order. Available values:
+    - `most-albums` (default)
+    - `a-z`
+- `DEFAULT_FAVOURITES_SECTION` Set the default favourites section. Available values:
+    - `albums` (default)
+    - `artists`
+    - `tracks`
+* `DEFAULT_GENRE_SORT` Set the default genre sorting order. Available values:
+    - `most-albums` (default)
+    - `a-z`
+* `DEFAULT_PODCAST_SORT` Set the default podcast sorting order. Available values:
+    - `recently-updated` (default)
+    - `a-z`
+- `DEFAULT_PLAYLIST_SORT` Set the default playlist sorting order. Available values:
+    - `recently-updated` (default)
+    - `a-z`
 
 ### Pre-built bundle
 
