@@ -37,7 +37,7 @@
     setup() {
       const store = usePlaylistStore()
       const playlists = computed(() => {
-        return store.playlists?.slice(0, 10)
+        return store.playlists
       })
       return {
         playlists,
